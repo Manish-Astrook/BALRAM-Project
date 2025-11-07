@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BALRAM – Bot for Agricultural Land Recovery, Analysis and Monitoring</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #4CAF50; /* Green for agriculture */
+            --secondary-color: #00897b; /* Teal for tech/IoT */
+            --background-color: #e0f2f1; /* Very light teal/green background */
+            --text-color: #333;
+            --card-bg: #fff;
+            --shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding-top: 80px; /* Space for fixed header */
+        }
+
+        /* --- Header/Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #b2dfdb;
+        }
+        
+        /* --- General Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            padding: 50px 30px;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        /* --- Hero Section (Title) --- */
+        #title {
+            background: linear-gradient(135deg, var(--primary-color), #81c784);
+            color: white;
+            text-align: center;
+            padding: 80px 20px 40px;
+            border-radius: 0 0 20px 20px;
+            margin-top: -80px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #title h1 {
+            font-size: 4em;
+            margin-bottom: 5px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #title p {
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+
+        /* --- Principles Grid --- */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .principle-card {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f0fff4; /* Pale green */
+            border: 1px solid #c8e6c9;
+            text-align: center;
+        }
+
+        /* --- Procedure/Description --- */
+        .procedure-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: center;
+            padding: 20px;
+            border-left: 5px solid var(--secondary-color);
+            background-color: #f7fcfb;
+            border-radius: 8px;
+        }
+        
+        .procedure-content {
+            flex: 2;
+        }
+
+        .procedure-image-container {
+            display: none;
+        }
+
+        .procedure-step strong {
+            display: block;
+            font-size: 1.6em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        /* --- Team and School Box Styling --- */
+        #team-box, #school-box {
+            text-align: center;
+            padding: 0 20px 30px;
+            background-color: var(--background-color);
+            margin: 0;
+        }
+        
+        .team-content, .school-content {
+            display: inline-block;
+            background-color: var(--card-bg);
+            border: 1px solid #c8e6c9;
+            border-left: 5px solid var(--primary-color);
+            padding: 25px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .team-content:hover, .school-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-content h3, .school-content h3 {
+            color: var(--primary-color);
+            border-bottom: 2px dashed #e8f5e9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            text-transform: uppercase;
+        }
+
+        .team-member, .school-detail {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 8px 0;
+            color: var(--text-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #title h1 {
+                font-size: 3em;
+            }
+            .nav-links {
+                display: none;
+            }
+            .procedure-step {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">BALRAM Bot</div>
+            <div class="nav-links">
+                <a href="#rationale">Rationale</a>
+                <a href="#principles">Concepts</a>
+                <a href="#procedure">Procedure</a>
+                <a href="#materials">Materials</a>
+                <a href="#summary">Summary</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="title">
+            <h1>BALRAM</h1>
+            <p>Bot for Agricultural Land Recovery, Analysis and Monitoring</p>
+        </section>
+
+        <section id="nature-rationale">
+            <h2><span style="color: var(--primary-color);">🌿</span> Project Overview</h2>
+            
+            <h3 style="color: var(--secondary-color);">Nature of Work</h3>
+            <ul style="list-style: disc; margin-left: 20px;">
+                <li>Application of basic principles of <strong>science and technology</strong></li>
+                <li><strong>Novel solution</strong>/ indigenous design to a problem/ challenge</li>
+            </ul>
+
+            <h3 style="color: var(--secondary-color);">Rationale</h3>
+            <p style="font-size: 1.1em; margin-top: 15px;">BALRAM Bot addresses critical farming challenges like pest attacks, weed growth, soil imbalance, and improper irrigation. This affordable bot autonomously monitors crops, identifies threats using <strong>AI-based image analysis</strong>, and shares details with farmers through a mobile app. This ensures early detection, suggests remedies, and optimizes irrigation, thereby <strong>saving time, effort, and resources</strong>, potentially leading to a <strong>15-20% reduction in resource use</strong>.</p>
+        </section>
+
+        <section id="principles">
+            <h2><span style="color: var(--primary-color);">💡</span> Scientific Principles/ Concepts</h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <h3>Robotics and Automation</h3>
+                    <p>Autonomous navigation using <strong>ultrasonic sensors</strong> for obstacle avoidance and movement.</p>
+                </div>
+                <div class="principle-card">
+                    <h3>IoT & Communication</h3>
+                    <p><strong>ESP32-CAM</strong> captures crop data and securely sends it to the mobile app.</p>
+                </div>
+                <div class="principle-card">
+                    <h3>Plant Pathology and AI</h3>
+                    <p><strong>Computer Vision</strong> is utilized for real-time pest and weed classification, trained on agricultural image datasets.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="materials">
+            <h2><span style="color: var(--secondary-color);">🛠️</span> Key Materials Used</h2>
+            <div style="column-count: 2; column-gap: 40px; list-style: square; margin-left: 20px;">
+                <ul>
+                    <li>Arduino UNO / Nano</li>
+                    <li>ESP32-CAM</li>
+                    <li>DC Motors + Motor Driver (L298N)</li>
+                    <li>Ultrasonic Sensor (HC-SR04)</li>
+                    <li>Soil Moisture Sensor</li>
+                    <li>DHT11 / DHT22 Sensor</li>
+                    <li><strong>Rechargeable Battery</strong></li>
+                    <li><strong>Mobile App</strong> (for alerts, pest/weed detection, and irrigation reminders)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="procedure">
+            <h2><span style="color: var(--primary-color);">🤖</span> Procedure/ Operational Description</h2>
+            
+            <div class="procedure-step">
+                <div class="procedure-content">
+                    <strong>1. Navigation and Monitoring</strong>
+                    <p>The bot moves autonomously through crop rows using ultrasonic sensing. The ESP32-CAM captures images which are transmitted to the mobile application for analysis.</p>
+                </div>
+            </div>
+
+            <div class="procedure-step">
+                <div class="procedure-content">
+                    <strong>2. AI Model for Pest and Weed Detection</strong>
+                    <p>The core innovation: The <strong>Computer Vision</strong> model classifies crop health. <strong>Early detection</strong> of pests or weeds triggers alerts and provides suggested actions via the app, reducing yield loss.</p>
+                </div>
+            </div>
+            
+            <div class="procedure-step">
+                <div class="procedure-content">
+                    <strong>3. Smart Irrigation Reminder</strong>
+                    <p>The bot sends soil/weather data to the app, which then calculates precise crop water needs. This acts as a reminder system, empowering farmers to irrigate at the optimal time, promoting <strong>water conservation</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="references">
+            <h2><span style="color: var(--secondary-color);">📚</span> References</h2>
+            <ul style="list-style: square; margin-left: 20px;">
+                <li>Principles of Agricultural Engineering.</li>
+                <li>IoT Applications in Smart Farming.</li>
+                <li>AI and Machine Learning in Agriculture.</li>
+                <li>Robotics in Agriculture – Research Articles.</li>
+                <li>ICAR Guidelines on Smart Farming.</li>
+            </ul>
+        </section>
+        
+        <section id="summary">
+            <h2><span style="color: var(--primary-color);">✅</span> Project Summary</h2>
+            <p style="font-size: 1.1em;">BALRAM is an integrated solution that leverages <strong>autonomous robotics</strong> and <strong>Computer Vision</strong> to bring precision agriculture benefits to small and medium-scale farmers. By automating monitoring and providing real-time, data-driven advice, it aims to protect crops, conserve water, and significantly improve farm productivity and resource management.</p>
+        </section>
+
+    </div>
+
+    <div id="team-box">
+        <div class="team-content">
+            <h3>Team Members</h3>
+            <div class="team-member">MANISH MOHAPATRA</div>
+            <div class="team-member">GAMPALA UMA MAHESH</div>
+        </div>
+    </div>
+    
+    <div id="school-box">
+        <div class="school-content">
+            <h3>Institution</h3>
+            <div class="school-detail">JUBILEE ENGLISH HIGH SCHOOL, CBSE, BANGALORE - 560036</div>
+        </div>
+    </div>
+
+    <footer>
+        <div style="background: #333; color: white; padding: 20px; text-align: center;">
+            <p>&copy; 2025 BALRAM Bot Project. Smart Farming, Smart Future.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
